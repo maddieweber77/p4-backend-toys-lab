@@ -74,7 +74,7 @@ def delete_toys(id):
 @app.post('/toys')
 def post_toys():
     data = request.json
-    new_toy = Toys(name=data['name'], image=data['image'], likes=0)
+    new_toy = Toys(name=data['name'], image=data['image'], likes=0, user_id=session.get("user_id"))
     db.session.add(new_toy)
     db.session.commit()
     return new_toy.to_dict()
